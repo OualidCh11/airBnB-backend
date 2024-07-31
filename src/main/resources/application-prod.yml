@@ -1,0 +1,39 @@
+#logging:
+#  level:
+#    ROOT: info
+#    org.hibernate.SQL: INFO
+#    fr.codecake.airbnbcloneback: INFO
+#
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://${POSTGRES_URL}:5432/${POSTGRES_DB}
+#    username: ${POSTGRES_USER}
+#    password: ${POSTGRES_PASSWORD}
+#  jpa:
+#    properties:
+#      hibernate:
+#        default_schema: airbnb
+#  liquibase:
+#    contexts: prod
+#    default-schema: airbnb
+
+logging:
+  level:
+    ROOT: info
+    org.hibernate.SQL: INFO
+    fr.codecake.airbnbcloneback: INFO
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/AirBnB_db
+    username: postgres
+    password: 123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        default_schema: airbnb
+  liquibase:
+    contexts: prod
+    default-schema: airbnb
+    schemas: airbnb
