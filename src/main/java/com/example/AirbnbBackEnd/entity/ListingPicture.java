@@ -21,8 +21,12 @@ public class ListingPicture {
     @JoinColumn(name = "listning_fk" , referencedColumnName = "id")
     private Listing listning;
     @Lob
-    @Column(nullable = false)
+    @Column(name = "file", nullable = false)
     private byte[] file;
+
+    @Column(name = "file_content_type")
     private String fileContentType;
+
+    @Column(name = "is_cover")
     private boolean isCover;
 }
