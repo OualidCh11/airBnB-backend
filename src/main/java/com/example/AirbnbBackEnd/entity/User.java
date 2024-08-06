@@ -8,6 +8,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name ="user")
@@ -18,13 +19,24 @@ public class User extends AbstractAuditingEntity<Long>{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator = "userSequenceGenerator")
     @SequenceGenerator(name = "userSequenceGenerator" , sequenceName = "user_generator" , allocationSize = 1)
+    @Column(name = "id")
     private Long id;
-    private String firstname;
-    private String lastname;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "email")
     private String email;
-    private String imageURL;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @UuidGenerator
-    private String publicId;
+    @Column(name = "public_id", nullable = false)
+    private UUID publicId;
 
     @ManyToMany
     @JoinTable(name = "user_authority",

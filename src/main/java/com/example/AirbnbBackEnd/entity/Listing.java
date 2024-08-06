@@ -20,6 +20,7 @@ public class Listing extends AbstractAuditingEntity<Long>{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "listingSequenceGenerator")
     @SequenceGenerator(name = "listingSequenceGenerator", sequenceName = "listing_generator", allocationSize = 1)
+    @Column(name = "id")
     private Long id;
 
     @UuidGenerator

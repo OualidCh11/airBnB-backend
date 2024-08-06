@@ -16,6 +16,7 @@ public class ListingPicture {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "listningPictureSequenceGenerator")
     @SequenceGenerator(name = "listningPictureSequenceGenerator" , sequenceName = "listing_picture_generator" , allocationSize = 1)
+    @Column(name = "id")
     private Long id;
     @ManyToOne
     @JoinColumn(name = "listning_fk" , referencedColumnName = "id")

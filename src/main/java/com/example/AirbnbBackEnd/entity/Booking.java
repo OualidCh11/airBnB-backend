@@ -14,11 +14,16 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Table(name = "booking")
+@AttributeOverrides({
+        @AttributeOverride(name = "createDate", column = @Column(name = "booking_create_date")),
+        @AttributeOverride(name = "lastModifiedDate", column = @Column(name = "booking_last_modified_date"))
+})
 public class Booking extends AbstractAuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "bookingSequenceGenerator")
     @SequenceGenerator(name = "bookingSequenceGenerator" , sequenceName = "booking_generator" , allocationSize = 1)
+    @Column(name = "id")
     private Long id;
 
     @UuidGenerator

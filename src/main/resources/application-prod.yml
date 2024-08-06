@@ -22,6 +22,7 @@ logging:
     ROOT: info
     org.hibernate.SQL: INFO
     fr.codecake.airbnbcloneback: INFO
+    liquibase: DEBUG
 
 spring:
   datasource:
