@@ -17,40 +17,41 @@ public class SecurityUtils {
     public static final String ROLE_LANDLORD = "ROLE_LANDLORD";
     public static final String CLAIMS_NAMESPACE = "https://www.codecake.fr/roles";
 
-    public static User mapOauth2AttributesToUser(Map<String, Object> attributes) {
+    public static User mapOauth2AttributesToUser(Map<String,Object> attribuate){
+
         User user = new User();
-        String sub = String.valueOf(attributes.get("sub"));
+        String sub = String.valueOf(attribuate.get("sub"));
 
         String username = null;
 
-        if (attributes.get("preferred_username") != null) {
-            username = ((String) attributes.get("preferred_username")).toLowerCase();
+        if(attribuate.get("prefered_name") != null){
+            username = ((String) attribuate.get("prefered_name")).toLowerCase();
         }
 
-        if (attributes.get("given_name") != null) {
-            user.setFirstName(((String) attributes.get("given_name")));
-        } else if ((attributes.get("nickname") != null)) {
-            user.setFirstName(((String) attributes.get("nickname")));
+        if (attribuate.get("given_name")!= null){
+            user.setFirstName(((String) attribuate.get("given_name")));
+        } else if ((attribuate.get("nickname")!= null)) {
+            user.setFirstName(((String) attribuate.get("nickname")));
         }
 
-        if (attributes.get("family_name") != null) {
-            user.setLastName(((String) attributes.get("family_name")));
+        if (attribuate.get("family_name")!= null){
+            user.setLastName(((String) attribuate.get("family_name")));
         }
 
-        if (attributes.get("email") != null) {
-            user.setEmail(((String) attributes.get("email")));
-        } else if (sub.contains("|") && (username != null && username.contains("@"))) {
+        if (attribuate.get("email")!= null){
+            user.setEmail(((String) attribuate.get("email")));
+        } else if (sub.contains("|")&&(username != null && username.contains("@"))) {
             user.setEmail(username);
-        } else {
+        }else {
             user.setEmail(sub);
         }
 
-        if (attributes.get("picture") != null) {
-            user.setImageUrl(((String) attributes.get("picture")));
+        if (attribuate.get("picture")!= null){
+            user.setImageUrl(((String) attribuate.get("picture")));
         }
 
-        if(attributes.get(CLAIMS_NAMESPACE) != null) {
-            List<String> authoritiesRaw = (List<String>) attributes.get(CLAIMS_NAMESPACE);
+        if(attribuate.get(CLAIMS_NAMESPACE) != null) {
+            List<String> authoritiesRaw = (List<String>) attribuate.get(CLAIMS_NAMESPACE);
             Set<Authority> authorities = authoritiesRaw.stream()
                     .map(authority -> {
                         Authority auth = new Authority();
